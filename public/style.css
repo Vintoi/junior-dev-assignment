@@ -52,6 +52,7 @@ ul li a{
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 }
 
 ul li a:visited{
@@ -60,6 +61,7 @@ ul li a:visited{
 
 ul li a:hover{
   background-color: #790e8b;
+  color: white;
 }
 
 h2{
