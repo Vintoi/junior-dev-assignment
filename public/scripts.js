@@ -3,9 +3,11 @@ const manufacturers = [];
 const controller = new AbortController();
 const signal = controller.signal;
 
+//const port = process.env.PORT || 3000
+
 const getItems = (category) => {
   showMessage('Fetching latest data...')
-  fetch(`http://localhost:${port}/product/${category}`,{
+  fetch(`/product/${category}`,{
     signal: signal
   })
   .then(res => res.json())
@@ -90,7 +92,7 @@ const renderItems = () => {
 
 const getAvailability = () => {
   showMessage('Availability info is loading. Please remain patient.');
-  const requests = manufacturers.map(manufacturer => fetch(`http://localhost:${port}/availability/${manufacturer}`,{
+  const requests = manufacturers.map(manufacturer => fetch(`/availability/${manufacturer}`,{
     signal: signal
   }))
   Promise.all(requests)
