@@ -5,7 +5,7 @@ const signal = controller.signal;
 
 const getItems = (category) => {
   showMessage('Fetching latest data...')
-  fetch(`http://localhost:3000/product/${category}`,{
+  fetch(`http://localhost:${port}/product/${category}`,{
     signal: signal
   })
   .then(res => res.json())
@@ -90,7 +90,7 @@ const renderItems = () => {
 
 const getAvailability = () => {
   showMessage('Availability info is loading. Please remain patient.');
-  const requests = manufacturers.map(manufacturer => fetch(`http://localhost:3000/availability/${manufacturer}`,{
+  const requests = manufacturers.map(manufacturer => fetch(`http://localhost:${port}/availability/${manufacturer}`,{
     signal: signal
   }))
   Promise.all(requests)
