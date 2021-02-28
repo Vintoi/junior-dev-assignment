@@ -19,7 +19,6 @@ app.get('/availability/:manufacturer', (req, res) => {
     .then(text => res.send(text))
 })
 
-
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`)
 })
