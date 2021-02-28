@@ -8,6 +8,7 @@
 body{
   height: 100%;
   width: 100%;
+  margin-top: 70px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -16,12 +17,13 @@ body{
 }
 
 nav{
-
   width: 35rem;
   height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
   background:  #8DA3CB;
 }
 
@@ -31,7 +33,6 @@ ul{
   justify-content: center;
   height: 120%;
   justify-self: center;
-  
 }
 
 ul li{
@@ -59,6 +60,12 @@ ul li a:hover{
   background-color: ##8DA3CB
   ;
   color: white
+}
+
+h1{
+  text-align: center;
+  margin-top: 1rem;
+  color: #172A51;
 }
 
 h2{
