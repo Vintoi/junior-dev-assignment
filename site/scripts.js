@@ -3,10 +3,8 @@ const manufacturers = [];
 const controller = new AbortController();
 const signal = controller.signal;
 
-//const port = process.env.PORT || 3000
-
 const getItems = (category) => {
-  showMessage('Fetching latest data...')
+  showMessage('Loading information')
   fetch(`/product/${category}`,{
     signal: signal
   })
@@ -33,22 +31,19 @@ const renderItems = () => {
   const tableHeadRow = document.createElement('tr');
   const tableHeadingName = document.createElement('th');
   tableHeadingName.textContent = 'Name';
-  const tableHeadingID = document.createElement('th');
-  tableHeadingID.textContent = 'ID';
   const tableHeadingAvailability = document.createElement('th');
   tableHeadingAvailability.textContent = 'Availability';
   const tableHeadingManufacturer = document.createElement('th');
   tableHeadingManufacturer.textContent = 'Manufacturer';
   const tableHeadingPrice = document.createElement('th');
-  tableHeadingPrice.textContent = 'Price';
+  tableHeadingPrice.textContent = 'Price €';
   const tableHeadingColor = document.createElement('th');
   tableHeadingColor.textContent = 'Color';
-  tableHeadRow.appendChild(tableHeadingID);
   tableHeadRow.appendChild(tableHeadingName);
-  tableHeadRow.appendChild(tableHeadingAvailability);
   tableHeadRow.appendChild(tableHeadingManufacturer);
   tableHeadRow.appendChild(tableHeadingPrice);
   tableHeadRow.appendChild(tableHeadingColor);
+  tableHeadRow.appendChild(tableHeadingAvailability);
   itemTable.appendChild(tableHeadRow);
   
   for(let i=0; i < items.length; i++){
@@ -58,24 +53,17 @@ const renderItems = () => {
 
     const tableRow = document.createElement('tr');
 
-    const id = document.createElement('td');
-    id.textContent = items[i].id;
-    tableRow.appendChild(id);
-
     const name = document.createElement('td');
     name.textContent = items[i].name;
     tableRow.appendChild(name);
 
-    const availability = document.createElement('td');
-    availability.textContent = items[i].availability;
-    tableRow.appendChild(availability);
 
     const manufacturer = document.createElement('td');
     manufacturer.textContent = items[i].manufacturer;
     tableRow.appendChild(manufacturer);
 
     const price = document.createElement('td');
-    price.textContent = items[i].price;
+    price.textContent = items[i].price + " €";
     tableRow.appendChild(price);
 
     const color = document.createElement('td');
@@ -84,14 +72,17 @@ const renderItems = () => {
     }
     tableRow.appendChild(color);
 
+    const availability = document.createElement('td');
+    availability.textContent = items[i].availability;
+    tableRow.appendChild(availability);
+
     itemTable.appendChild(tableRow);
   }
   
-    
 }
 
 const getAvailability = () => {
-  showMessage('Availability info is loading. Please remain patient.');
+  showMessage('Loading availability');
   const requests = manufacturers.map(manufacturer => fetch(`/availability/${manufacturer}`,{
     signal: signal
   }))
@@ -112,7 +103,7 @@ const getAvailability = () => {
 const handleAvailability = (responses) => {
   responses.forEach(response => {
     if(response.response.length < 3){
-      showMessage('One or more requests failed. Some availability info will be missing. Refresh page to try again. If this problem persists please contact the system administrator.')
+      showMessage('There was problem while loading availability information. Try refreshing')
     }
     for(let j=0; j < response.response.length; j++){
       const index = items.findIndex(x => x.id === response.response[j].id);
@@ -133,8 +124,6 @@ const showMessage = (message) => {
 }
 
 
-//if user would click a link during the availability-fetch-process, load times are very long
-//this aborts the requests, making the page change a lot quicker
 const abortRequests = () => {
   controller.abort();
 }
