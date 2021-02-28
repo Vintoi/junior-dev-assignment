@@ -1,5 +1,6 @@
 # Reaktors Assignment for junior developers.
 
-Reaktors summer position assingment for junior developers. 
+
+This is my solution Reaktors summer position assingment for junior developers. This was first time trying anything like this. 
+
 ---
-This is a test
