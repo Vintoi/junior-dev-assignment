@@ -3,7 +3,7 @@ const app = express()
 const port = process.env.PORT || 3000
 const fetch = require('node-fetch');
 
-app.use(express.static('public'));
+app.use(express.static('site'));
 
 app.get('/product/:category', (req, res) => {
   let category=req.params.category
@@ -18,8 +18,6 @@ app.get('/availability/:manufacturer', (req, res) => {
     .then(res => res.json())
     .then(text => res.send(text))
 })
-
-
 
 
 app.listen(port, () => {
