@@ -1,7 +1,7 @@
 {
   "name": "vintoi_test",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.1.0",
+  "description": "Reaktor-web-app-assignment",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,11 +15,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vintoi/reaktor-test.git"
+    "url": "git+https://github.com/Vintoi/junior-dev-assignment.git"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/Vintoi/reaktor-test/issues"
+    "url": "https://github.com/Vintoi/junior-dev-assignment.git/issues"
   },
-  "homepage": "https://github.com/Vintoi/reaktor-test#readme"
+  "homepage": "https://github.com/Vintoi/junior-dev-assignment.git#readme"
 }
